@@ -6,6 +6,7 @@
     Generate the task instances for
         number substitution characteristic
         contraction characteristic
+        emoticon/emoji characteristic
 
     Take Subsample of potential tasks
 """
