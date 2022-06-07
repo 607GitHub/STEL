@@ -173,3 +173,8 @@ REDDIT_SKIP_COMMENTS = [" ", "", " [removed] ", "[ removed ]", "[removed]", "[ d
                         " \n", "\n ", " \n "]
 NSUBS_PATH = "../Data/Experiment-Results/annotations/00_nsubs_sentences.txt"
 NSUBS_TRANSLATED = "../Data/Experiment-Results/annotations/00_nsubs_translated_sentences.txt"
+
+EMOTE_PATH = "../Data/Experiment-Results/annotations/collected_emoticons.txt"
+EMOTE_TRANSLATED = "../Data/Experiment-Results/annotations/generated_emoji.txt"
+EMOJI_PATH = "../Data/Experiment-Results/annotations/collected_emoji.txt"
+EMOJI_TRANSLATED = "../Data/Experiment-Results/annotations/generated_emoticons.txt"
