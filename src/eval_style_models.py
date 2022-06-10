@@ -31,7 +31,8 @@ import set_for_global
 
 cur_dir = os.path.dirname(os.path.realpath(__file__))
 LOCAL_STEL_CHAR_QUAD = [cur_dir + '/../Data/STEL/characteristics/quad_questions_char_contraction.tsv',
-                        cur_dir + '/../Data/STEL/characteristics/quad_questions_char_substitution.tsv']
+                        cur_dir + '/../Data/STEL/characteristics/quad_questions_char_substitution.tsv',
+                        cur_dir + '/../Data/STEL/characteristics/quad_questions_char_emotives.tsv']
 
 STYLE_OBJECTS = [LevenshteinSimilarity(),
                  CharacterThreeGramSimilarity(),
