@@ -20,7 +20,7 @@ class PickleObjectGenerator:
 def file_lines_to_list(file_name):
     with open(file_name, 'r', encoding='utf-8') as f: # Set encoding to prevent errors
         result = list(f.readlines())
-    return [sentence[:-1] for sentence in result]
+    return [sentence[:-1] for sentence in result] # [:-1] to remove newline; input file must end with empty line
 
 
 # PANDAS file utility
