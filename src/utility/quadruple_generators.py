@@ -13,7 +13,7 @@ import pandas as pd
 from base_generators import WikiAbstractStream
 from const_generators import SIMPLE_TURKER_IDS, \
     CONTRACTION_DICT, \
-    NSUBS_PATH, NSUBS_TRANSLATED
+    NSUBS_PATH, NSUBS_TRANSLATED, EMOJI_PATH, EMOJI_TRANSLATED, EMOTE_PATH, EMOTE_TRANSLATED
 from to_add_const import SIMPLE_TEST_TRUE_CASE_PATH, SIMPLE_TUNE_TRUE_CASE_PATH, GYAFC_PATH, TUNE_GYAFC_PATH
 
 NBR_CHARS = 100
@@ -433,6 +433,27 @@ class NumberSubsQuadrupleGenerator(QuadrupleGenerator):
                                                            second_style_list=leet_words_trans,
                                                            second_style_string="norm-", return_quad=quad,
                                                            shuffle_iter=shuffle_iter)
+
+
+class EmotiveQuadrupleGenerator(QuadrupleGenerator):
+    def __init__(self, emoticons_sent_path=EMOTE_PATH,
+                emoticons_translated_sent_path=EMOTE_TRANSLATED,
+                emoji_sent_path=EMOJI_PATH, emoji_translated_sent_path = EMOJI_TRANSLATED,
+                quad = True, shuffle_iter=False):
+        import file_utility
+        emoticons_collected = file_utility.file_lines_to_list(emoticons_sent_path)
+        emoji_trans = file_utility.file_lines_to_list(emoji_translated_sent_path)
+        emoticons_all = emoticons_collected + emoji_trans
+
+        emoji_collected = file_utility.file_lines_to_list(emoji_sent_path)
+        emoticons_trans = file_utility.file_lines_to_list(emoticons_translated_sent_path)
+        emoji_all = emoticons_trans + emoji_collected # Note these must be in this order to line up with emoticons_all
+        
+        super(EmotiveQuadrupleGenerator, self).__init__(first_style_list=emoticons_all,
+                                                        first_style_string="emote",
+                                                        second_style_list=emoji_all,
+                                                        second_style_string="emoji",
+                                                        return_quad=quad, shuffle_iter=shuffle_iter)        
 
 
 class MockConvokitUtterance:

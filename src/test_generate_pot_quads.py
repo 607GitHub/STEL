@@ -11,6 +11,9 @@ def test_nsubs_generation():
     from generate_pot_quads import main
     main(action="generate-char-quads", style_char=[set_for_global.NBR_SUBSTITUTION])
 
+def test_emotive_generation():
+    from generate_pot_quads import main
+    main(action="generate-char-quads", style_char=[set_for_global.EMOTIVE])
 
 def test_gen_subsposs():
     import nsubs_possibilities

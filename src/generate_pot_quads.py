@@ -20,7 +20,7 @@ import random
 
 from set_for_global import ALTERNATIVE12_COL, ALTERNATIVE11_COL, ANCHOR2_COL, ANCHOR1_COL, NBR_FOR_CORRECT_COL, ID_COL, \
     CORRECT_ALTERNATIVE_COL, IN_SUBSAMPLE_COL, STYLE_TYPE_COL, VAL_SIMPLICITY, VAL_FORMALITY, STYLE_DIMS, FORMAL_KEY, \
-    SIMPLE_KEY, NBR_SUBSTITUTION, CONTRACTION, SUBSAMPLE_SIZE
+    SIMPLE_KEY, NBR_SUBSTITUTION, CONTRACTION, EMOTIVE, SUBSAMPLE_SIZE
 
 STEL_CHAR_KEYWORDS = [CONTRACTION, NBR_SUBSTITUTION]  # [NBR_SUBSTITUTION, CONTRACTION]
 SIMPLE_TURKER_VERSION = True
@@ -60,10 +60,13 @@ def main(action="generate", style_char=None, quad_tsv_file=None):
         for char_type in style_char:
             nbr_nbrsubs = 0
             nbr_contract = 0
+            nbr_emotive = 0
             if char_type == NBR_SUBSTITUTION:
                 triplet_gen = quadruple_generators.NumberSubsQuadrupleGenerator(quad=True)
             if char_type == CONTRACTION:
                 triplet_gen = quadruple_generators.ContractionQuadrupleGenerator(quad=True, nbr_contractions=102)
+            if char_type == EMOTIVE: # Emoji vs emoticons
+                triplet_gen = quadruple_generators.EmotiveQuadrupleGenerator(quad=True)
 
             # ITERATE over quadruples, u1 is paraphrase of u3, u2 is parapharse of u4,
             #    u1 and u2 have same type, u3 and u4 have same type, u2 is always the correct answer
@@ -87,18 +90,22 @@ def main(action="generate", style_char=None, quad_tsv_file=None):
                     nbr_nbrsubs += 1
                 elif char_type == CONTRACTION:
                     nbr_contract += 1
+                elif char_type == EMOTIVE:
+                    nbr_emotive += 1
 
         bench_file_name = "quad_questions_char"
         if NBR_SUBSTITUTION in style_char:
             bench_file_name += "_{}-{}".format(NBR_SUBSTITUTION, nbr_nbrsubs)
         if CONTRACTION in style_char:
             bench_file_name += "_{}-{}".format(CONTRACTION, nbr_contract)
+        if EMOTIVE in style_char:
+            bench_file_name += "_{}-{}".format(EMOTIVE, nbr_emotive)
         quad_file_ending = ".tsv"
 
         quad_df.to_csv(bench_file_name + quad_file_ending, sep='\t')
 
-        logging.info('saved {} substitution and {} contraction examples to {}'.format(nbr_nbrsubs, nbr_contract,
-                                                                                      bench_file_name + quad_file_ending))
+        logging.info('saved {} substitution, {} contraction and {} emotive examples to {}'.format(nbr_nbrsubs, nbr_contract, nbr_emotive,
+                                                                                        bench_file_name + quad_file_ending))
 
     elif action == "generate-quads":
         # Generate the potential style dimension quadruple sets and save to tsv

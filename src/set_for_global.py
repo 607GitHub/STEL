@@ -80,6 +80,7 @@ ACCURACY_COL = 'Accuracy'
 MODEL_NAME_COL = 'Model Name'
 NBR_SUBSTITUTION = 'nbr_substitution'
 CONTRACTION = 'contraction'
+EMOTIVE = 'emotives'
 SUBSAMPLE_SIZE = 300
 VAL_POLITENESS = "politeness"
 VAL_CONTRACTION = "contraction"
