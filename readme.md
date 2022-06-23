@@ -135,6 +135,10 @@ When you add all necessary (partly proprietary) data to use ALL functionalities,
 │   │   ├── annotations
 │   │   │   ├── 00_nsubs_sentences.txt
 │   │   │   ├── 00_nsubs_translated_sentences.txt
+│   │   │   ├── collected_emoji.txt
+│   │   │   ├── collected_emoticons.txt
+│   │   │   ├── generated_emoji.txt
+│   │   │   ├── generated_emoticons.txt
 │   │   │   ├── QUAD-full_agreement_accuracy.log
 │   │   │   ├── _QUAD-full_annotations.tsv
 │   │   │   ├── QUAD-subsample_agreement_accuracy.log
@@ -159,6 +163,7 @@ When you add all necessary (partly proprietary) data to use ALL functionalities,
 │   └── STEL
 │       ├── characteristics
 │       │   ├── quad_questions_char_contraction.tsv
+│       │   ├── quad_questions_char_emotives.tsv
 │       │   └── quad_questions_char_substitution.tsv
 │       ├── dimensions
 │       │   ├── quad_stel-dimension_formal-100_sample.tsv
